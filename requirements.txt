@@ -14,7 +14,7 @@ flake8
 black
 mypy
 types-geopandas
-python-type-stubs
+#python-type-stubs
 pydocstyle
 bandit
 safety
