@@ -32,6 +32,9 @@ venv/
 env/
 ENV/
 
+# Environment variables
+.env
+
 # Generated files
 results/
 logs/

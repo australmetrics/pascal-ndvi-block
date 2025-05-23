@@ -101,26 +101,39 @@ pascal-ndvi-block/
 ├── results/              # Generated results (default)
 ├── src/
 │   ├── __init__.py
-│   ├── main.py            # Punto de entrada y CLI
-│   ├── preprocessor.py    # Funciones de preprocesamiento (recorte)
-│   └── indices.py         # Cálculo de índices vegetativos
+│   ├── main.py            # Entry point and CLI
+│   ├── preprocessor.py    # Preprocessing functions (clipping)
+│   └── indices.py         # Vegetation indices calculation
 ├── tests/
-│   └── test_main.py       # Tests unitarios
+│   └── test_main.py       # Unit tests
 ├── README.md
 └── requirements.txt
 ```
 
-## Conformidad con ISO 42001
+## Configuration
 
-Este módulo está diseñado siguiendo los principios de ISO 42001 para sistemas de gestión de inteligencia artificial:
+1. Copy the environment variables example file:
+```powershell
+Copy-Item .env.example .env
+```
 
-- **Simplicidad**: Interfaces mínimas y flujos de trabajo claros
-- **Documentación**: Código y APIs completamente documentados
-- **Mantenibilidad**: Estructura modular y pruebas automatizadas
-- **Reproducibilidad**: Resultados consistentes con los mismos datos de entrada
-- **Trazabilidad**: Registro detallado del procesamiento mediante loguru
+2. Edit the `.env` file with your settings:
+   - `USERNAME`: Your username for audit logs
+   - `LOG_LEVEL`: Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
 
-## Requisitos
+The `.env` file will not be uploaded to Git for security.
+
+## ISO 42001 Compliance
+
+This module is designed following ISO 42001 principles for artificial intelligence management systems:
+
+- **Simplicity**: Minimal interfaces and clear workflows
+- **Documentation**: Fully documented code and APIs
+- **Maintainability**: Modular structure and automated testing
+- **Reproducibility**: Consistent results with the same input data
+- **Traceability**: Detailed processing logs using loguru
+
+## Requirements
 
 - Python 3.7+
 - rasterio
@@ -129,13 +142,13 @@ Este módulo está diseñado siguiendo los principios de ISO 42001 para sistemas
 - typer
 - loguru
 
-## Soporte y Contacto
+## Support and Contact
 
-- **Repositorio Interno**: Crear issue en GitHub para reportar problemas
-- **Documentación**: Ver documentación en la carpeta `docs/` del repositorio
-- **Contacto**: Contactar al equipo de desarrollo de AustralMetrics SpA
+- **Internal Repository**: Create GitHub issue to report problems
+- **Documentation**: See documentation in the `docs/` folder
+- **Contact**: Contact AustralMetrics SpA development team
 
-## Licencia y Uso
+## License and Usage
 
-Este software es propiedad de AustralMetrics SpA. Su uso, modificación y distribución está restringido a personal autorizado de la empresa.
+This software is property of AustralMetrics SpA. Its use, modification, and distribution is restricted to authorized company personnel.
 

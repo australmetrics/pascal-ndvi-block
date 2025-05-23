@@ -49,31 +49,31 @@ def setup_logging(output_dir: Path) -> None:
     """
 ```
 - Format: Timestamp, process, user
-- Backup: Automático con hash SHA-256
-- Retención: 90 días por defecto
+- Backup: Automatic with SHA-256 hash
+- Retention: 90 days by default
 
-## Gestión de Memoria
+## Memory Management
 
-### Procesamiento por Bloques
-- Tamaño máximo de imagen: 10GB
-- Procesamiento en chunks de 1024x1024
-- Uso de memoria monitoreado
+### Block Processing
+- Maximum image size: 10GB
+- Processing in 1024x1024 chunks
+- Monitored memory usage
 
-## Límites y Validaciones
+## Limits and Validations
 
-### Validaciones de Entrada
-- Formatos soportados: GeoTIFF
-- Satélites: Sentinel-2, Landsat 8
-- Cobertura de nubes: <50%
+### Input Validations
+- Supported formats: GeoTIFF
+- Satellites: Sentinel-2, Landsat 8
+- Cloud coverage: <50%
 
-### Validaciones de Salida
-- Rango de valores NDVI: [-1, 1]
-- Rango de valores SAVI: [-1, 1]
-- Metadata preservada
+### Output Validations
+- NDVI value range: [-1, 1]
+- SAVI value range: [-1, 1]
+- Preserved metadata
 
-## APIs y Funciones
+## APIs and Functions
 
-### Función Principal
+### Main Function
 ```python
 def process_image(
     image_path: Path,
@@ -83,22 +83,22 @@ def process_image(
 ) -> Dict[str, Path]:
 ```
 
-### Parámetros Configurables
+### Configurable Parameters
 ```python
 MAX_IMAGE_SIZE_GB = 10.0
 DEFAULT_SAVI_L = 0.5
 LOG_RETENTION_DAYS = 90
 ```
 
-## Manejo de Errores
+## Error Handling
 
-### Errores Controlados
+### Controlled Errors
 - ImageTooLargeError
 - InvalidBandError
 - ProcessingError
 - ValidationError
 
-### Logging de Errores
-- Stacktrace completo
-- Contexto de error
-- Estado del sistema
+### Error Logging
+- Complete stacktrace
+- Error context
+- System state

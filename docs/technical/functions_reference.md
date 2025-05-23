@@ -49,50 +49,50 @@ Clips a raster image using a shapefile.
 - `shapefile_path`: Path to clipping shapefile
 
 **Returns:**
-- Array NumPy con la imagen recortada
+- NumPy array with clipped image
 
-**Validaciones:**
-- Archivos deben existir
-- Sistemas de coordenadas compatibles
-- Área de recorte válida
+**Validations:**
+- Files must exist
+- Compatible coordinate systems
+- Valid clipping area
 
-## Logging y Trazabilidad
+## Logging and Traceability
 
 ### `setup_logging(output_dir: Path) -> None`
-Configura el sistema de logging según ISO 42001.
+Configures the logging system according to ISO 42001.
 
-**Parámetros:**
-- `output_dir`: Directorio para archivos de log
+**Parameters:**
+- `output_dir`: Directory for log files
 
-**Características:**
-- Timestamps precisos
-- Backup automático
-- Verificación de integridad SHA-256
-- Rotación de logs
+**Features:**
+- Precise timestamps
+- Automatic backup
+- SHA-256 integrity verification
+- Log rotation
 
-## Configuración
+## Configuration
 
 ### `get_config() -> Dict[str, Any]`
-Retorna la configuración actual del sistema.
+Returns the current system configuration.
 
-**Retorna:**
-- Diccionario con valores de configuración
+**Returns:**
+- Dictionary with configuration values
 
-**Parámetros configurables:**
-- Directorios de trabajo
-- Índices soportados
-- Límites de seguridad
-- Configuración de satélites
+**Configurable Parameters:**
+- Working directories
+- Supported indices
+- Security limits
+- Satellite configuration
 
-## Manejo de Errores
+## Error Handling
 
-Todas las funciones implementan:
-- Validación de entrada
-- Mensajes de error descriptivos
-- Logging de errores
-- Trazabilidad según ISO 42001
+All functions implement:
+- Input validation
+- Descriptive error messages
+- Error logging
+- Traceability according to ISO 42001
 
-## Ejemplos de Uso
+## Usage Examples
 
 ```python
 from pathlib import Path
@@ -109,9 +109,9 @@ nir = clip_raster("imagen_nir.tif", "area.shp")
 ndvi = calculate_ndvi(red, nir)
 ```
 
-## Notas de Implementación
+## Implementation Notes
 
-- Todas las funciones son thread-safe
-- Optimizadas para grandes conjuntos de datos
-- Implementan manejo de memoria eficiente
-- Cumplen con tipado estático
+- All functions are thread-safe
+- Optimized for large datasets
+- Implement efficient memory management
+- Comply with static typing

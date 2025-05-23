@@ -49,8 +49,8 @@
 1. CI/CD must pass
 2. Review by at least one maintainer
 3. Updated documentation
-4. Tests añadidos/actualizados
+4. Tests added/updated
 
-## Contacto
+## Contact
 
-Para dudas o problemas, crear un issue en el repositorio.
+For questions or issues, please create an issue in the repository.

@@ -49,6 +49,6 @@ This documentation complies with ISO 42001 traceability and audit requirements, 
 
 This documentation is reviewed and updated as part of the CI/CD process. Changes are validated through:
 - Peer review
-- Tests automatizados
-- Verificación de integridad
-- Control de calidad
+- Automated tests
+- Integrity verification
+- Quality control

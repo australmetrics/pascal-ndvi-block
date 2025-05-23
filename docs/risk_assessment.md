@@ -48,14 +48,14 @@
 - Non-standard vegetation indices
 - Real-time processing
 
-## 4. Plan de Monitoreo
+## 4. Monitoring Plan
 
-### 4.1 Monitoreo Continuo
-- Logs de uso y errores
-- Métricas de calidad de resultados
-- Feedback de usuarios
+### 4.1 Continuous Monitoring
+- Usage and error logs
+- Result quality metrics
+- User feedback
 
-### 4.2 Revisión Periódica
-- Revisión mensual de logs
-- Actualización de documentación
-- Ajuste de parámetros según necesidad
+### 4.2 Periodic Review
+- Monthly log review
+- Documentation updates
+- Parameter adjustments as needed
