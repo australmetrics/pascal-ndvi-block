@@ -1,7 +1,8 @@
 """Main module for PASCAL NDVI Block.
 
 Provides the command-line interface and core functions for processing satellite
-imagery and calculating vegetation indices following ISO 42001 guidelines."""
+imagery and calculating vegetation indices following ISO 42001 guidelines.
+"""
 
 from pathlib import Path
 import typer

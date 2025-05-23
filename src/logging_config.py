@@ -35,12 +35,13 @@ def backup_log(log_file: Path, backup_dir: Path) -> None:
 
 
 def setup_logging(output_dir: Path) -> None:
-    """
-    Configura el sistema de logging para ISO 42001.
-    Implementa logging auditable y permanente según estándares.
+    """Configure logging system according to ISO 42001 standards.
+
+    Implements auditable and permanent logging following standardized guidelines.
+    Ensures log file integrity and maintains backup copies with verification.
 
     Args:
-        output_dir: Directorio donde guardar los logs
+        output_dir: Directory path where log files will be stored
     """
     # Crear directorios
     log_dir = output_dir / "logs"
