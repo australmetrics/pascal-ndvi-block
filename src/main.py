@@ -1,8 +1,7 @@
-"""Módulo principal de PASCAL NDVI Block.
+"""Main module for PASCAL NDVI Block.
 
-Este módulo proporciona la interfaz de línea de comandos y las funciones
-principales para procesar imágenes satelitales y calcular índices vegetativos.
-"""
+Provides the command-line interface and core functions for processing satellite
+imagery and calculating vegetation indices following ISO 42001 guidelines."""
 
 from pathlib import Path
 import typer
@@ -16,7 +15,7 @@ app = typer.Typer()
 
 
 def init_logging(output_dir: Path) -> None:
-    """Inicializa el sistema de logging."""
+    """Initializes the ISO 42001 compliant logging system."""
     setup_logging(output_dir)
     logger.info("🚀 Iniciando P.A.S.C.A.L NDVI Block")
     logger.info(f"📁 Directorio de salida: {output_dir}")
@@ -24,19 +23,22 @@ def init_logging(output_dir: Path) -> None:
 
 @app.command("clip")
 def clip(
-    image: Path = typer.Option(..., exists=True, help="Archivo .tif multibanda"),
-    shapefile: Path = typer.Option(..., exists=True, help="Archivo .shp de polígonos"),
-    output: Path = typer.Option("results", help="Directorio de salida"),
+    image: Path = typer.Option(..., exists=True, help="Multiband .tif file"),
+    shapefile: Path = typer.Option(..., exists=True, help="Polygon .shp file"),
+    output: Path = typer.Option("results", help="Output directory"),
 ) -> Path:
-    """Recorta una imagen satelital usando un shapefile.
+    """Clips a satellite image using a shapefile.
+
+    Clips input raster to the extent of provided shapefile while preserving
+    all bands and metadata.
 
     Args:
-        image: Ruta al archivo de imagen multibanda.
-        shapefile: Ruta al archivo shapefile con polígonos.
-        output: Directorio donde guardar el resultado.
+        image: Path to multiband image file
+        shapefile: Path to polygon shapefile
+        output: Directory to save results
 
     Returns:
-        Path: Ruta al archivo recortado.
+        Path: Path to clipped file
     """
     # Inicializar logging
     init_logging(Path(output))
@@ -56,22 +58,25 @@ def clip(
 
 @app.command("indices")
 def indices(
-    image: Path = typer.Option(..., exists=True, help="Archivo .tif multibanda"),
-    output: Path = typer.Option("results", help="Directorio de salida"),
+    image: Path = typer.Option(..., exists=True, help="Multiband .tif file"),
+    output: Path = typer.Option("results", help="Output directory"),
     indices_list: Optional[List[str]] = typer.Option(
         None,
-        help="Lista de índices a calcular (ndvi,ndre,savi). Por defecto calcula todos.",
+        help="List of indices to calculate (ndvi,ndre,savi). Calculates all by default.",
     ),
 ) -> Dict[str, Path]:
-    """Calcula índices vegetativos para una imagen satelital.
+    """Calculates vegetation indices for a satellite image.
+
+    Processes input image to generate requested vegetation indices following
+    ISO 42001 calculation standards.
 
     Args:
-        image: Ruta al archivo de imagen multibanda.
-        output: Directorio donde guardar los resultados.
-        indices_list: Lista opcional de índices a calcular.
+        image: Path to multiband image file
+        output: Directory to save results
+        indices_list: Optional list of indices to calculate
 
     Returns:
-        Dict[str, Path]: Diccionario con nombres de índices y rutas a los archivos.
+        Dict[str, Path]: Dictionary mapping index names to result files
     """
     # Inicializar logging
     init_logging(Path(output))
@@ -93,21 +98,24 @@ def indices(
 
 @app.command("auto")
 def auto_process(
-    image: Path = typer.Option(..., exists=True, help="Archivo .tif multibanda"),
+    image: Path = typer.Option(..., exists=True, help="Multiband .tif file"),
     shapefile: Optional[Path] = typer.Option(
-        None, exists=True, help="Archivo .shp opcional"
+        None, exists=True, help="Optional .shp file"
     ),
-    output: Path = typer.Option("results", help="Directorio de salida"),
+    output: Path = typer.Option("results", help="Output directory"),
 ) -> Dict[str, Path]:
-    """Procesa una imagen automáticamente, opcional con recorte.
+    """Processes an image automatically, optionally with clipping.
+
+    Provides a complete processing pipeline including optional clipping and
+    calculation of all vegetation indices.
 
     Args:
-        image: Ruta al archivo de imagen multibanda.
-        shapefile: Ruta opcional al archivo shapefile para recorte.
-        output: Directorio donde guardar los resultados.
+        image: Path to multiband image file
+        shapefile: Optional path to clipping shapefile
+        output: Directory to save results
 
     Returns:
-        Dict[str, Path]: Diccionario con nombres de índices y rutas a los archivos.
+        Dict[str, Path]: Dictionary mapping index names to result files
     """
     # Inicializar logging
     init_logging(Path(output))
@@ -141,18 +149,19 @@ def auto_process(
 def process_image(
     image_path: Path, output_dir: Path, indices: List[str], savi_l: float = 0.5
 ) -> Dict[str, Path]:
-    """
-    Función principal para procesar una imagen satelital y calcular índices vegetativos.
-    Esta función implementa el flujo de trabajo principal según ISO 42001.
+    """Main function for processing satellite imagery and calculating indices.
+
+    Implements the core processing workflow according to ISO 42001 standards,
+    including validation, calculation, and logging.
 
     Args:
-        image_path: Ruta a la imagen satelital multibanda
-        output_dir: Directorio donde guardar los resultados
-        indices: Lista de índices a calcular (ndvi, savi, ndre)
-        savi_l: Factor de ajuste para el índice SAVI
+        image_path: Path to multiband satellite image
+        output_dir: Directory to save results
+        indices: List of indices to calculate (ndvi, savi, ndre)
+        savi_l: Adjustment factor for SAVI index
 
     Returns:
-        Diccionario con los nombres de índices y rutas a los archivos generados
+        Dictionary mapping index names to generated file paths
     """
     # Inicializar logging
     init_logging(output_dir)

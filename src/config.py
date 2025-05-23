@@ -1,6 +1,7 @@
-"""
-Configuración global para PASCAL NDVI Block.
-Incluye valores por defecto seguros y constantes del sistema.
+"""Global configuration for PASCAL NDVI Block.
+
+Includes safe default values and system constants following ISO 42001 guidelines
+for configuration management and security.
 """
 
 from pathlib import Path

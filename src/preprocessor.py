@@ -1,7 +1,7 @@
-"""Módulo de preprocesamiento de imágenes satelitales.
+"""Satellite image preprocessing module.
 
-Este módulo proporciona funciones para preparar las imágenes antes del cálculo
-de índices, incluyendo recorte con shapefiles y validación de datos.
+Provides functions for preparing images before index calculation, including
+shapefile clipping and data validation according to ISO 42001 standards.
 """
 
 from pathlib import Path
@@ -15,16 +15,18 @@ from loguru import logger
 def clip_image_with_shapefile(
     image_path: Path, shapefile_path: Path, output_path: Path
 ) -> Path:
-    """
-    Recorta una imagen satelital multibanda usando un shapefile de polígonos.
+    """Clips a multiband satellite image using a polygon shapefile.
+
+    Takes a raster image and clips it to the extent of the provided shapefile,
+    preserving all bands and metadata in the process.
 
     Args:
-        image_path (Path): Ruta al archivo .tif
-        shapefile_path (Path): Ruta al archivo .shp
-        output_path (Path): Carpeta donde guardar el resultado
+        image_path: Path to the .tif file
+        shapefile_path: Path to the .shp file
+        output_path: Directory to save the result
 
     Returns:
-        Path: Ruta al nuevo archivo TIFF recortado
+        Path to the new clipped TIFF file
     """
     logger.info("🧩 Cargando shapefile...")
     gdf = gpd.read_file(shapefile_path)

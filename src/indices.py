@@ -1,6 +1,7 @@
-"""
-Módulo para el cálculo de índices vegetativos a partir de imágenes satelitales.
-Compatible con imágenes Sentinel-2 y Landsat.
+"""Module for calculating vegetation indices from satellite imagery.
+
+Compatible with Sentinel-2 and Landsat imagery. Provides automated band detection
+and standardized index calculations following ISO 42001 requirements.
 """
 
 import numpy as np
@@ -12,15 +13,16 @@ from .config import DEFAULT_SAVI_L
 
 
 def identify_bands(src: rasterio.DatasetReader) -> Dict[str, int]:
-    """
-    Identifica automáticamente las bandas relevantes basándose en metadatos
-    o en las longitudes de onda de la imagen.
+    """Automatically identifies relevant bands based on metadata or wavelengths.
+
+    Uses image metadata or wavelength information to detect and map spectral bands
+    to their corresponding indices in the dataset.
 
     Args:
-        src: Objeto dataset de rasterio con la imagen multiespectral
+        src: Rasterio dataset object containing the multispectral image
 
     Returns:
-        Diccionario con nombres de bandas y sus índices correspondientes
+        Dictionary mapping band names to their indices in the dataset
     """
     bands = {}
 
@@ -80,15 +82,17 @@ def identify_bands(src: rasterio.DatasetReader) -> Dict[str, int]:
 
 
 def calculate_ndvi(image_path: Path, output_dir: Path) -> Path:
-    """
-    Calcula el índice NDVI (Normalized Difference Vegetation Index).
+    """Calculate NDVI (Normalized Difference Vegetation Index).
+
+    Process a multiband satellite image to generate the NDVI index following
+    ISO 42001 calculation standards.
 
     Args:
-        image_path: Ruta a la imagen satelital multibanda
-        output_dir: Directorio donde guardar el resultado
+        image_path: Path to multiband satellite image
+        output_dir: Directory to save results
 
     Returns:
-        Ruta al archivo NDVI generado
+        Path to the generated NDVI file
     """
     output_dir.mkdir(parents=True, exist_ok=True)
     output_file = output_dir / f"{image_path.stem}_ndvi.tif"
@@ -119,15 +123,17 @@ def calculate_ndvi(image_path: Path, output_dir: Path) -> Path:
 
 
 def calculate_ndre(image_path: Path, output_dir: Path) -> Path | None:
-    """
-    Calcula el índice NDRE (Normalized Difference Red Edge).
+    """Calculate NDRE (Normalized Difference Red Edge).
+
+    Process a multiband satellite image to generate the NDRE index,
+    requires Red Edge bands.
 
     Args:
-        image_path: Ruta a la imagen satelital multibanda
-        output_dir: Directorio donde guardar el resultado
+        image_path: Path to multiband satellite image
+        output_dir: Directory to save results
 
     Returns:
-        Ruta al archivo NDRE generado o None si no se encuentran las bandas necesarias
+        Path to generated NDRE file or None if required bands not found
     """
     output_dir.mkdir(parents=True, exist_ok=True)
     output_file = output_dir / f"{image_path.stem}_ndre.tif"
@@ -159,16 +165,18 @@ def calculate_ndre(image_path: Path, output_dir: Path) -> Path | None:
 
 
 def calculate_savi(image_path: Path, output_dir: Path, L: float = 0.5) -> Path:
-    """
-    Calcula el índice SAVI (Soil Adjusted Vegetation Index).
+    """Calculate SAVI (Soil Adjusted Vegetation Index).
+
+    Process a multiband satellite image to generate the SAVI index with
+    configurable soil adjustment factor.
 
     Args:
-        image_path: Ruta a la imagen satelital multibanda
-        output_dir: Directorio donde guardar el resultado
-        L: Factor de ajuste de suelo (0 = sin ajuste, 1 = máximo ajuste)
+        image_path: Path to multiband satellite image
+        output_dir: Directory to save results
+        L: Soil adjustment factor (0 = no adjustment, 1 = maximum)
 
     Returns:
-        Ruta al archivo SAVI generado
+        Path to generated SAVI file
     """
     output_dir.mkdir(parents=True, exist_ok=True)
     output_file = output_dir / f"{image_path.stem}_savi_L{L:.2f}.tif"
@@ -199,15 +207,17 @@ def calculate_savi(image_path: Path, output_dir: Path, L: float = 0.5) -> Path:
 
 
 def calculate_all_indices(image_path: Path, output_dir: Path) -> Dict[str, Path]:
-    """
-    Calcula todos los índices vegetativos disponibles para una imagen.
+    """Calculate all available vegetation indices for an image.
+
+    Processes a multiband satellite image to generate all supported vegetation
+    indices according to ISO 42001 standards.
 
     Args:
-        image_path: Ruta a la imagen satelital multibanda
-        output_dir: Directorio donde guardar los resultados
+        image_path: Path to multiband satellite image
+        output_dir: Directory to save results
 
     Returns:
-        Diccionario con nombres de índices y rutas a los archivos generados
+        Dictionary mapping index names to generated file paths
     """
     results = {}
 

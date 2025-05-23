@@ -1,6 +1,6 @@
-"""
-Tests de integración para verificar el flujo completo del sistema.
-"""
+"""Integration tests for verifying complete system workflow.
+
+Tests end-to-end functionality following ISO 42001 validation requirements."""
 
 import numpy as np
 import rasterio
@@ -12,11 +12,13 @@ from src.logging_config import setup_logging
 
 
 def test_full_workflow(tmp_path: Path) -> None:
-    """
-    Prueba el flujo completo del sistema:
+    """Tests the complete system workflow with simulated satellite data.
+
+    Verifies image processing, index calculation, and logging functionality
+    in an integrated test environment.
 
     Args:
-        tmp_path: Directorio temporal proporcionado por pytest.
+        tmp_path: Temporary directory provided by pytest
     """
     # Configurar directorios de prueba
     input_dir = tmp_path / "input"

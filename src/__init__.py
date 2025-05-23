@@ -1,6 +1,4 @@
-"""
-PASCAL NDVI Block - Módulo de cálculo de índices de vegetación
-"""
+"""PASCAL NDVI Block - Vegetation index calculation module."""
 
 from .main import process_image
 from .indices import (

@@ -1,6 +1,6 @@
-"""
-Tests unitarios para las funcionalidades principales.
-"""
+"""Unit tests for core functionality.
+
+Validates individual components according to ISO 42001 test requirements."""
 
 from pathlib import Path
 from src.config import (
@@ -13,7 +13,7 @@ from src.config import (
 
 
 def test_config_values() -> None:
-    """Verifica que los valores de configuración sean correctos."""
+    """Verifies that configuration values are correct and within valid ranges."""
     config = get_config()
 
     # Verifica directorios

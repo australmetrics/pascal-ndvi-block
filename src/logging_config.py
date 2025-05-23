@@ -1,8 +1,7 @@
-"""Configuración del sistema de logging para el proyecto PASCAL NDVI Block.
+"""Logging system configuration for PASCAL NDVI Block project.
 
-Este módulo proporciona funciones para configurar el sistema de logging,
-incluyendo manejo de archivos de log, rotación, y formatos personalizados
-que cumplen con ISO 42001.
+Provides functions for configuring the logging system, including log file handling,
+rotation, and custom formats compliant with ISO 42001 requirements.
 """
 
 from loguru import logger
@@ -15,7 +14,7 @@ from datetime import datetime
 
 
 def calculate_hash(file_path: Path) -> str:
-    """Calcula el hash SHA-256 de un archivo."""
+    """Calculates the SHA-256 hash of a file."""
     sha256_hash = hashlib.sha256()
     with open(file_path, "rb") as f:
         for byte_block in iter(lambda: f.read(4096), b""):
@@ -24,7 +23,7 @@ def calculate_hash(file_path: Path) -> str:
 
 
 def backup_log(log_file: Path, backup_dir: Path) -> None:
-    """Crea una copia de respaldo del archivo de log."""
+    """Creates a backup copy of the log file with integrity verification."""
     backup_dir.mkdir(parents=True, exist_ok=True)
     backup_file = backup_dir / f"{log_file.stem}_backup{log_file.suffix}"
     shutil.copy2(log_file, backup_file)
