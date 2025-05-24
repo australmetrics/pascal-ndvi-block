@@ -1,6 +1,17 @@
-remote_theme: pages-themes/cayman@v0.2.0
+theme: jekyll-theme-cayman
 plugins:
-- jekyll-remote-theme
+  - jekyll-remote-theme
+  - jekyll-optional-front-matter
+  - jekyll-default-layout
+  - jekyll-titles-from-headings
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+include:
+  - _pages
 
 title: PASCAL NDVI Block Documentation
 description: High-performance vegetation index calculation with ISO 42001 compliance
