@@ -15,20 +15,20 @@ This documentation complies with ISO 42001 traceability and audit requirements, 
 ## Documentation Structure
 
 ### Guides & Manuals
-- `user_guide/user_guide.md`: Complete end-user manual
+- [User Guide](user_guide/user_guide.html): Complete end-user manual
   - Step-by-step instructions
   - Usage examples
   - Troubleshooting
 
 ### Technical Documentation
-- `technical/technical_documentation.md`: General technical specifications
-- `technical/functions_reference.md`: Detailed function reference
+- [Technical Documentation](technical/technical_documentation.html): General technical specifications
+- [Functions Reference](technical/functions_reference.html): Detailed function reference
   - Parameters and types
   - Usage examples
   - Error handling
 
 ### Compliance & Governance
-- `compliance/iso42001_compliance.md`: Complete ISO 42001 compliance documentation
+- [ISO 42001 Compliance](compliance/iso42001_compliance.html): Complete ISO 42001 compliance documentation
   - Requirements checklist
   - Detailed implementation
   - Code examples
