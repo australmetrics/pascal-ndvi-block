@@ -2,7 +2,6 @@
 layout: default
 title: PASCAL NDVI Block Documentation
 description: ISO 42001 compliant documentation for vegetation index calculation system
-permalink: /
 ---
 
 # PASCAL NDVI Block Documentation v1.0.0
