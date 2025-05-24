@@ -1,0 +1,21 @@
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+- jekyll-remote-theme
+
+title: PASCAL NDVI Block Documentation
+description: High-performance vegetation index calculation with ISO 42001 compliance
+
+# Navigation
+header_pages:
+  - user_guide/user_guide.md
+  - technical/technical_documentation.md
+  - compliance/iso42001_compliance.md
+
+# GitHub Pages settings
+github:
+  is_project_page: true
+  repository_url: https://github.com/australmetrics/pascal-ndvi-block
+
+# Additional settings
+markdown: kramdown
+show_downloads: true
