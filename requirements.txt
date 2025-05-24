@@ -18,6 +18,10 @@ types-geopandas
 pydocstyle
 bandit
 safety
+build
+twine
+setuptools>=45
+wheel
 
 # Tipos para verificación estática
 types-setuptools
