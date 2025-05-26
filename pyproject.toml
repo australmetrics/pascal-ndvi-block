@@ -1,6 +1,6 @@
 [project]
 name = "pascal-ndvi-block"
-version = "1.0.1"
+version = "1.0.2"
 description = "High-performance NDVI/SAVI/NDRE with ISO 42001 compliance"
 readme = "README.md"
 authors = [
