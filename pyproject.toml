@@ -15,29 +15,10 @@ dependencies = [
   "geopandas",
   "shapely",
   "loguru",
-  "numpy"
-]
-
-[project.optional-dependencies]
-dev = [
-  "pytest>=7.0.0",
-  "pytest-cov",
-  "coverage",
-  "flake8",
-  "black",
-  "mypy",
-  "types-geopandas",
-  "pydocstyle",
-  "bandit",
-  "safety",
-  "build",
-  "twine",
-  "setuptools>=45",
-  "wheel",
-  "types-setuptools",
-  "types-python-dateutil"
+  "numpy",
 ]
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
