@@ -46,3 +46,6 @@ data/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+
+# Confidential files
+docs-private/

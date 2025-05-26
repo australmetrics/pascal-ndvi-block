@@ -1,31 +1,42 @@
 # Changelog
 
-## [1.0.0] - 2025-05-22
-### Added
-- Initial implementation of NDVI calculation
-- SAVI implementation with configurable L factor
-- ISO 42001-compliant logging system
-- Automated backup system with verification
-- Unit and integration tests
-- Complete documentation
-
+## [1.0.1] – 2025-05-25
 ### Changed
-- Project structure reorganization
-- Enhanced logging system
-- CI/CD implementation
+- Restructured `docs/` to separate public and private content.
+- Updated `_config.yml` with new navigation (`header_pages`).
+- Added `LICENSE` file and metadata in `pyproject.toml`.
+- Improved CI/CD workflow for GitHub Pages deployment.
+- Removed redundant `docs/README.md`.
 
 ### Fixed
-- Spectral band validation
-- Error handling in processing pipeline
-- Log formatting
+- Broken links in `index.md` after moving confidential files.
 
-## [0.9.0] - 2025-05-15
+## [1.0.0] – 2025-05-22
 ### Added
-- Beta version of NDVI calculation
-- Basic logging system
-- Initial test suite
+- Initial implementation of NDVI calculation.
+- SAVI implementation with configurable L-factor.
+- ISO 42001-compliant logging system.
+- Automated backup system with verification.
+- Unit and integration tests.
+- Complete documentation.
+
+### Changed
+- Project structure reorganization.
+- Enhanced logging system.
+- CI/CD implementation.
+
+### Fixed
+- Spectral band validation.
+- Error handling in processing pipeline.
+- Log formatting.
+
+## [0.9.0] – 2025-05-15
+### Added
+- Beta version of NDVI calculation.
+- Basic logging system.
+- Initial test suite.
 
 ### Pending
-- Complete documentation
-- Implement additional vegetation indices
-- Improve error handling
+- Complete documentation.
+- Implement additional vegetation indices.
+- Improve error handling.

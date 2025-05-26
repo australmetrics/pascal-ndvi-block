@@ -10,17 +10,17 @@ kramdown:
   input: GFM
   hard_wrap: false
 
-include:
-  - _pages
-
 title: PASCAL NDVI Block Documentation
 description: High-performance vegetation index calculation with ISO 42001 compliance
 
 # Navigation
 header_pages:
+  - index.md
+  - README.md
+  - examples/basic_usage.md
+  - examples/advanced_examples.md
   - user_guide/user_guide.md
   - technical/technical_documentation.md
-  - compliance/iso42001_compliance.md
 
 # GitHub Pages settings
 github:
@@ -28,5 +28,5 @@ github:
   repository_url: https://github.com/australmetrics/pascal-ndvi-block
 
 # Additional settings
-markdown: kramdown
 show_downloads: true
+
