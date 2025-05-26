@@ -10,35 +10,30 @@ jobs:
     permissions:
       contents: read
       packages: write
+
     steps:
-      - uses: actions/checkout@v4
-      
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-          
-      - name: Install dependencies
+
+      - name: Install build tools
         run: |
           python -m pip install --upgrade pip
           python -m pip install build twine
-          
+
       - name: Build package
         run: python -m build
-        
-      - name: Configure PyPI credentials
-        run: |
-          echo "[testpypi]" > ~/.pypirc
-          echo "repository = https://test.pypi.org/legacy/" >> ~/.pypirc
-          echo "username = __token__" >> ~/.pypirc
-          echo "password = ${{ secrets.TEST_PYPI_API_TOKEN }}" >> ~/.pypirc
-          echo "[github]" >> ~/.pypirc
-          echo "repository = https://maven.pkg.github.com/australmetrics/pascal-ndvi-block" >> ~/.pypirc
-          echo "username = ${{ github.actor }}" >> ~/.pypirc
-          echo "password = ${{ secrets.GITHUB_TOKEN }}" >> ~/.pypirc
-        
+
       - name: Publish to GitHub Packages
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TWINE_USERNAME: ${{ github.actor }}
+          TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python -m twine upload --repository github dist/*
+          python -m twine upload \
+            --repository-url https://maven.pkg.github.com/australmetrics/pascal-ndvi-block \
+            dist/*
+
