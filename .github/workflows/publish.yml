@@ -30,10 +30,12 @@ jobs:
 
       - name: Publish to GitHub Packages
         env:
-          TWINE_USERNAME: ${{ github.actor }}
+          TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python -m twine upload \
-            --repository-url https://maven.pkg.github.com/australmetrics/pascal-ndvi-block \
+            --repository-url https://pypi.pkg.github.com/australmetrics/ \
+            --username __token__ \
+            --password ${{ secrets.GITHUB_TOKEN }} \
             dist/*
 
