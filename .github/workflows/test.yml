@@ -24,18 +24,18 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Instalar dependencias
+          python-version: ${{ matrix.python-version }}      - name: Instalar dependencias
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
           python -m pip install flake8 black mypy pytest pytest-cov bandit safety pydocstyle
-
+          
       - name: Verificar formato de código
         run: |
           flake8 src/ tests/ --count --max-line-length=100 --statistics
-          black --check src/ tests/      - name: Verificar tipos
+          black --check src/ tests/
+
+      - name: Verificar tipos
         run: |
           mypy src/ tests/
 
