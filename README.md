@@ -6,6 +6,7 @@ A high-performance module for calculating NDVI, NDRE, and SAVI indices from Sent
 
 ## Project Status
 ![Tests & Lint](https://github.com/australmetrics/pascal-ndvi-block/actions/workflows/test.yml/badge.svg)
+[![codecov](https://codecov.io/gh/australmetrics/pascal-ndvi-block/branch/main/graph/badge.svg)](https://codecov.io/gh/australmetrics/pascal-ndvi-block)
 [![ISO 42001](https://img.shields.io/badge/ISO-42001-blue.svg)](docs/compliance/iso42001_compliance.md)
 
 - **Version**: 1.0.0
@@ -19,6 +20,14 @@ A high-performance module for calculating NDVI, NDRE, and SAVI indices from Sent
 - **Multiple Indices**: Calculate NDVI, NDRE, and SAVI in a single pass
 - **Intuitive CLI**: Simple commands for all operations
 - **Automated Pipeline**: Complete processing with a single command
+
+## Normative Dependencies
+
+This project follows ISO 42001 compliance requirements and integrates with other PASCAL ecosystem blocks. For detailed information about normative dependencies and compliance:
+
+- [Normative Dependencies Documentation](docs/compliance/normative_dependencies.md)
+- [ISO 42001 Compliance](docs/compliance/iso42001_compliance.md)
+- [Security Policy](SECURITY.md)
 
 ## Quality Control & CI/CD
 

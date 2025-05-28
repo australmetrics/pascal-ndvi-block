@@ -39,11 +39,17 @@ jobs:
 
       - name: Verificar tipos
         run: |
-          mypy src/ tests/
-
-      - name: Ejecutar tests con cobertura
+          mypy src/ tests/      - name: Ejecutar tests con cobertura
         run: |
           pytest tests/ --cov=src/ --cov-report=xml --cov-report=term-missing:skip-covered
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+          fail_ci_if_error: true
+          verbose: true
 
       - name: Verificar documentación
         run: |

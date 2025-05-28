@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.0.3] - 2025-05-28
+### Added
+- JSON Schema validation for `manifest.json`.
+- Codecov integration and coverage badge.
+- `CODEOWNERS` file for clear ownership assignment.
+- SHA-256 hash for private documentation.
+
+### Changed
+- Updated documentation structure.
+- Improved ISO 42001 compliance documentation.
+- Enhanced governance pipeline with coverage tracking.
+
+### Security
+- Added documentation integrity verification.
+- Updated private documentation handling.
+
 ## [1.0.1] – 2025-05-25
 ### Changed
 - Restructured `docs/` to separate public and private content.
