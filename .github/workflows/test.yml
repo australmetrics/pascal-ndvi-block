@@ -35,11 +35,11 @@ jobs:
       - name: Verificar formato de código
         run: |
           flake8 src/ tests/ --count --max-line-length=100 --statistics
-          black --check src/ tests/
-
-      - name: Verificar tipos
+          black --check src/ tests/      - name: Verificar tipos
         run: |
-          mypy src/ tests/      - name: Ejecutar tests con cobertura
+          mypy src/ tests/
+
+      - name: Ejecutar tests con cobertura
         run: |
           pytest tests/ --cov=src/ --cov-report=xml --cov-report=term-missing:skip-covered
 
