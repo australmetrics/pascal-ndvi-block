@@ -44,9 +44,19 @@ jobs:
           if [ -d "tests" ] && [ "$(ls -A tests/*.py 2>/dev/null)" ]; then
             pytest -q --cov=src --cov-report=xml --cov-report=term
           else
-            echo "No tests found, skipping test execution"
-            echo "Creating basic structure validation instead"
+            echo "No tests found, creating dummy coverage"
+            echo '<?xml version="1.0" ?><coverage version="7.0.0"><sources><source>.</source></sources><packages></packages></coverage>' > coverage.xml
           fi
+
+      # Codecov reactivado
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: coverage.xml
+          fail_ci_if_error: false
+          verbose: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   compliance-check:
     needs: quality-check
