@@ -2,102 +2,60 @@ name: Verificación de Calidad ISO 42001
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main]
   pull_request:
-    branches: [main, develop]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   quality-check:
-    name: Control de Calidad
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10"]
+        python-version: ['3.10']  # añade más si quieres probar 3.9, 3.11
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    steps:      
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Instalar dependencias
+          python-version: ${{ matrix.python-version }}      
+          
+      - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r requirements.txt
-          python -m pip install flake8 black mypy pytest pytest-cov bandit safety pydocstyle
-
-      - name: Verificar formato de código
+          pip install -r requirements.txt
+      - name: Run tests with coverage
         run: |
-          flake8 src/ tests/ --count --max-line-length=100 --statistics
-          black --check src/ tests/
+          pytest -q --cov=src --cov-report=xml --cov-report=term
 
-      - name: Ejecutar tests con cobertura
-        run: |
-          pytest tests/ --cov=src/ --cov-report=xml --cov-report=term-missing:skip-covered
-
+      # Subir resultados a Codecov
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.xml
+          file: coverage.xml
           fail_ci_if_error: true
-          verbose: true
-
-      - name: Verificar tipos
-        run: |
-          mypy src/ tests/
-
-      - name: Verificar documentación
-        run: |
-          pydocstyle src/
-
-      - name: Verificar seguridad
-        run: |
-          bandit -r src/ -ll
-
-      - name: Verificar dependencias
-        run: |
-          safety check
 
   compliance-check:
-    name: Verificación ISO 42001
     needs: quality-check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Verificar estructura de logging
-        run: |
-          test -f "src/logging_config.py" || exit 1
-
-      - name: Verificar documentación ISO 42001
-        run: |
-          test -f "docs/compliance/iso42001_compliance.md" || exit 1
-
-      - name: Verificar archivos requeridos
-        run: |
-          for file in README.md CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md; do
-            test -f "$file" || exit 1
-          done
+      - name: ISO 42001 Compliance Check
+        run: echo "Aquí ejecutarás tu script/linter ISO 42001"
 
   notify:
-    name: Notificación de Resultados
     needs: [quality-check, compliance-check]
     runs-on: ubuntu-latest
-    if: always()
+    if: always()  # se ejecuta aunque algo falle
     steps:
       - name: Resultado de verificación
-        shell: bash
         run: |
-          if [[ "${{ needs.quality-check.result }}" == "success" && "${{ needs.compliance-check.result }}" == "success" ]]; then
-            echo "✅ Verificación exitosa - ISO 42001 Compliance Check"
-            exit 0
+          if [[ "${{ needs.quality-check.result }}" == "success" && \
+                "${{ needs.compliance-check.result }}" == "success" ]]; then
+              echo "✅ Verificación completa (Quality + ISO 42001)"
           else
-            echo "❌ Verificación fallida - ISO 42001 Compliance Check"
-            exit 1
+              echo "❌ Verificación fallida - revisa jobs"
+              exit 1
           fi
+

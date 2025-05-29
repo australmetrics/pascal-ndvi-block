@@ -35,7 +35,7 @@ try {
 
 Write-Step "Ejecutando tests con cobertura"
 try {
-    pytest tests/ --cov=src/ --cov-report=xml --cov-report=term-missing:skip-covered
+    pytest tests/ --cov=pascal_ndvi_block --cov-report=xml --cov-report=term-missing:skip-covered
 } catch {
     $success = $false
     Write-Host "❌ Error en tests" -ForegroundColor $colors.Error

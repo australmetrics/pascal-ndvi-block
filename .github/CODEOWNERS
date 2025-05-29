@@ -1,20 +1,21 @@
 # Global code owners
-* @australmetrics/pascal-maintainers
+* @robmeseng
 
 # Documentation owners
-/docs/ @australmetrics/pascal-docs
-/docs-private/ @australmetrics/pascal-docs
+/docs/         @robmeseng
+/docs-private/ @robmeseng
 
 # Core functionality
-/src/ @australmetrics/pascal-core
-/tests/ @australmetrics/pascal-core
+/src/   @robmeseng
+/tests/ @robmeseng
 
 # Configuration and metadata
-*.toml @australmetrics/pascal-maintainers
-*.json @australmetrics/pascal-maintainers
-*.yml @australmetrics/pascal-maintainers
+*.toml @robmeseng
+*.json @robmeseng
+*.yml  @robmeseng
 
 # Compliance and security
-/docs/compliance/ @australmetrics/pascal-compliance
-/SECURITY.md @australmetrics/pascal-compliance
-/CODE_OF_CONDUCT.md @australmetrics/pascal-compliance
+/docs/compliance/    @robmeseng
+/SECURITY.md         @robmeseng
+/CODE_OF_CONDUCT.md  @robmeseng
+
